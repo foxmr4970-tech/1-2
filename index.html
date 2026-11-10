@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1220" />
+    <title>Электро KGZ — калькулятор электрика</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+      <span class="logo">⚡ ЭлектрокВт KG</span>
+      </div>
+      <div class="tabs">
+        <button type="button" class="tab active" data-tab="line">Линия</button>
+        <button type="button" class="tab" data-tab="load">Нагрузка</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ВКЛАДКА 1: РАСЧЁТ ЛИНИИ -->
+      <section id="tab-line" class="panel active">
+        <div class="block">
+          <div class="label">Сеть</div>
+          <div class="seg" data-group="net">
+            <button type="button" data-value="1" class="active">1 фаза · 220 В</button>
+            <button type="button" data-value="3">3 фазы · 380 В</button>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="label">Что известно</div>
+          <div class="seg" data-group="mode">
+            <button type="button" data-value="kw" class="active">Мощность, кВт</button>
+            <button type="button" data-value="a">Ток, А</button>
+          </div>
+          <input id="val" type="text" inputmode="decimal" placeholder="например 3.5" />
+        </div>
+
+        <div class="block">
+          <div class="label">cos φ</div>
+          <input id="cos" type="text" inputmode="decimal" value="1" />
+          <div class="chips" id="cos-chips">
+            <button type="button" data-cos="1">1 — нагреватели</button>
+            <button type="button" data-cos="0.95">0.95 — быт</button>
+            <button type="button" data-cos="0.85">0.85</button>
+            <button type="button" data-cos="0.8">0.8 — двигатели</button>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="label">Длина линии, м</div>
+          <input id="len" type="text" inputmode="decimal" value="20" />
+        </div>
+
+        <div class="block">
+          <div class="label">Материал жил</div>
+          <div class="seg" data-group="mat">
+            <button type="button" data-value="cu" class="active">Медь</button>
+            <button type="button" data-value="al">Алюминий</button>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="label">Допустимое падение напряжения, %</div>
+          <input id="drop" type="text" inputmode="decimal" value="5" />
+        </div>
+
+        <div id="result" class="result"></div>
+        <p class="note">
+          Расчёт ориентировочный: кабель в стене или трубе, по таблицам ПУЭ. Перед монтажом сверяйся с проектом и
+          нормами.
+        </p>
+      </section>
+
+      <!-- ВКЛАДКА 2: СУММАРНАЯ НАГРУЗКА -->
+      <section id="tab-load" class="panel">
+        <div class="block">
+          <div class="label">Быстро добавить прибор</div>
+          <div class="chips" id="quick">
+            <button type="button" data-name="Чайник" data-kw="2">Чайник 2</button>
+            <button type="button" data-name="Утюг" data-kw="2">Утюг 2</button>
+            <button type="button" data-name="Стиралка" data-kw="2.2">Стиралка 2.2</button>
+            <button type="button" data-name="Микроволновка" data-kw="1.2">Микроволновка 1.2</button>
+            <button type="button" data-name="Духовка" data-kw="3">Духовка 3</button>
+            <button type="button" data-name="Варочная панель" data-kw="7">Варочная 7</button>
+            <button type="button" data-name="Бойлер" data-kw="2">Бойлер 2</button>
+            <button type="button" data-name="Кондиционер" data-kw="2.5">Кондиционер 2.5</button>
+            <button type="button" data-name="Освещение" data-kw="0.5">Освещение 0.5</button>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="label">Список приборов</div>
+          <div class="row row-head"><span>Название</span><span>кВт</span><span>Шт</span><span></span></div>
+          <div id="rows"></div>
+          <button type="button" id="add-row" class="btn-second full">+ Добавить строку</button>
+        </div>
+
+        <div class="block">
+          <div class="label">Коэффициент спроса (1 = всё включено сразу)</div>
+          <input id="kc" type="text" inputmode="decimal" value="1" />
+          <div class="chips" id="kc-chips">
+            <button type="button" data-kc="1">1</button>
+            <button type="button" data-kc="0.8">0.8</button>
+            <button type="button" data-kc="0.7">0.7</button>
+            <button type="button" data-kc="0.6">0.6</button>
+          </div>
+        </div>
+
+        <div id="load-result" class="result"></div>
+        <button type="button" id="use-load" class="btn-main full">Использовать в расчёте линии →</button>
+      </section>
+    </main>
+
+    <script src="js/calc.js"></script>   
+    <script src="js/tools.js"></script>    
+    <script src="js/devices.js"></script>
+  </body>
+</html>

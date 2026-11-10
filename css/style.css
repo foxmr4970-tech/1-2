@@ -1,0 +1,376 @@
+:root {
+  --bg: #0b1220;
+  --card: #162032;
+  --border: #2a3a55;
+  --text: #e8edf5;
+  --muted: #8fa0b8;
+  --accent: #facc15;
+  --accent-text: #111827;
+  --ok: #4ade80;
+  --warn: #fb923c;
+  --error: #f87171;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.45;
+}
+
+/* Шапка и вкладки */
+header {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 12px 16px 4px;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--accent);
+}
+
+.tabs {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 8px;
+}
+
+.tab {
+  flex: 1;
+  background: none;
+  color: var(--muted);
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 12px 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+main {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px 16px 48px;
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+/* Блоки формы */
+.block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.2rem; /* не меньше 16px, чтобы iPhone не увеличивал экран */
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.seg {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.seg:last-child {
+  margin-bottom: 0;
+}
+
+.seg button {
+  flex: 1;
+  padding: 14px 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.seg button.active {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chips button {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.chips button:active {
+  background: var(--border);
+}
+
+/* Кнопки */
+.btn-main,
+.btn-second {
+  padding: 14px 20px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-main {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.btn-second {
+  background: var(--border);
+  color: var(--text);
+}
+
+.full {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* Список приборов */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 72px 56px 40px;
+  gap: 6px;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.row input {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.row-head {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.del {
+  background: none;
+  border: none;
+  color: var(--error);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Результаты */
+.result {
+  margin: 16px 0;
+}
+
+.result:empty {
+  display: none;
+}
+
+.res-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.res-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.res-card.big {
+  grid-column: 1 / -1;
+  border-color: var(--accent);
+}
+
+.res-card .name {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.res-card .value {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.res-card .sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.msg {
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+.msg.warn {
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid var(--warn);
+}
+
+.msg.error {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid var(--error);
+}
+
+.msg.ok {
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid var(--ok);
+}
+
+.note {
+  color: var(--muted);
+  font-size: 0.85rem;
+}.tabs {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 12px 14px;
+}
+
+select {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.2rem;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.sect {
+  margin: 20px 0 10px;
+  color: var(--accent);
+  font-size: 1.05rem;
+}
+
+.block .sect {
+  margin-top: 0;
+}
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.tbl td,
+.tbl th {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.tbl th {
+  color: var(--muted);
+  font-weight: 600;
+}#sugg {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  background: var(--card);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+#sugg button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+}
+
+#sugg button:last-child {
+  border-bottom: none;
+}
+
+#sugg button:active {
+  background: var(--border);
+}
+
+#sugg span {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-left: 12px;
+  white-space: nowrap;
+}
