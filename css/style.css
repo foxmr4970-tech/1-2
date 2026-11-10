@@ -373,4 +373,31 @@ select {
   font-size: 0.9rem;
   margin-left: 12px;
   white-space: nowrap;
+}.header-inner {
+  position: relative;
+}
+
+#lang-switch {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#lang-switch button {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--bg);
+  color: var(--muted);
+  border: none;
+  cursor: pointer;
+}
+
+#lang-switch button.active {
+  background: var(--accent);
+  color: var(--accent-text);
 }
